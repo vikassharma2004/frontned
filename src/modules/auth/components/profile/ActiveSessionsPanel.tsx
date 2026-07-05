@@ -1,8 +1,3 @@
-import { useListSessions } from '../../hooks/useListSessions';
-import { useRevokeSession, useRevokeOtherSessions } from '../../hooks/useRevokeSession';
-import type { SessionInfo } from '../../types/auth.types';
-import { Laptop, Globe, Clock, MonitorSmartphone } from 'lucide-react';
-
 export function ActiveSessionsPanel() {
   const sessions = [
     {
@@ -35,18 +30,18 @@ export function ActiveSessionsPanel() {
     <div className="flex flex-col gap-6 animate-in fade-in duration-300 w-full max-w-[1200px]">
       <div className="mb-2 flex items-start justify-between">
         <div>
-          <h1 className="text-[24px] font-semibold text-white mb-2 tracking-[-0.5px]">Active Sessions</h1>
-          <p className="text-[14px] text-[#8A8F98] leading-relaxed">Manage the devices currently logged into your account.</p>
+          <h1 className="text-[24px] font-semibold text-foreground mb-2 tracking-[-0.5px]">Active Sessions</h1>
+          <p className="text-[14px] text-muted-foreground leading-relaxed">Manage the devices currently logged into your account.</p>
         </div>
         <button 
-          className="px-4 py-2 border border-[#ef4444]/20 bg-[#2a1313] text-[#ef4444] text-[13px] font-medium rounded-md hover:bg-[#3f1919] transition-all"
+          className="px-4 py-2 border border-destructive/20 bg-destructive/15 text-destructive text-[13px] font-medium rounded-md hover:bg-destructive/15 transition-all"
         >
           Revoke All Others
         </button>
       </div>
 
-      <div className="bg-[#141414] border border-[#1f1f1f] rounded-lg overflow-hidden">
-        <div className="grid grid-cols-[2.5fr_2fr_1.5fr_1fr] px-6 py-4 border-b border-[#1f1f1f] text-[13px] font-medium text-[#8A8F98]">
+      <div className="bg-card border border-border rounded-lg overflow-hidden">
+        <div className="grid grid-cols-[2.5fr_2fr_1.5fr_1fr] px-6 py-4 border-b border-border text-[13px] font-medium text-muted-foreground">
           <div>Device / Browser</div>
           <div>Location & IP</div>
           <div>Status</div>
@@ -55,27 +50,27 @@ export function ActiveSessionsPanel() {
         
         <div className="flex flex-col">
           {sessions.map((s, i) => (
-            <div key={s.id} className={`grid grid-cols-[2.5fr_2fr_1.5fr_1fr] px-6 py-5 items-center hover:bg-[rgba(255,255,255,0.02)] transition-colors ${i !== (sessions.length - 1) ? 'border-b border-[#1f1f1f]' : ''}`}>
+            <div key={s.id} className={`grid grid-cols-[2.5fr_2fr_1.5fr_1fr] px-6 py-5 items-center hover:bg-[rgba(255,255,255,0.02)] transition-colors ${i !== (sessions.length - 1) ? 'border-b border-border' : ''}`}>
               <div className="flex flex-col gap-1">
-                <h4 className="text-[14px] font-medium text-white">{s.device}</h4>
-                <p className="text-[12px] text-[#8A8F98]">Last active: {s.lastActive}</p>
+                <h4 className="text-[14px] font-medium text-foreground">{s.device}</h4>
+                <p className="text-[12px] text-muted-foreground">Last active: {s.lastActive}</p>
               </div>
               <div className="flex flex-col gap-1">
-                <p className="text-[14px] text-[#e8e8e8]">{s.location}</p>
-                <p className="text-[12px] font-mono text-[#8A8F98]">{s.ip}</p>
+                <p className="text-[14px] text-foreground">{s.location}</p>
+                <p className="text-[12px] font-mono text-muted-foreground">{s.ip}</p>
               </div>
               <div>
                 {s.isCurrent ? (
-                  <span className="px-2.5 py-1 bg-[rgba(16,185,129,0.1)] text-[#10b981] text-[11px] font-semibold rounded uppercase tracking-wider">Current Session</span>
+                  <span className="px-2.5 py-1 bg-[rgba(16,185,129,0.1)] text-primary text-[11px] font-semibold rounded uppercase tracking-wider">Current Session</span>
                 ) : null}
               </div>
               <div>
                 {s.isCurrent ? (
-                  <button className="px-4 py-1.5 border border-[#2a2a2a] bg-[#1a1a1a] text-[#e8e8e8] text-[13px] font-medium rounded-md hover:bg-[#2a2a2a] transition-all">
+                  <button className="px-4 py-1.5 border border-border bg-accent text-foreground text-[13px] font-medium rounded-md hover:bg-accent transition-all">
                     Active
                   </button>
                 ) : (
-                  <button className="px-4 py-1.5 border border-[#2a2a2a] bg-[#1a1a1a] text-[#e8e8e8] text-[13px] font-medium rounded-md hover:border-[rgba(239,68,68,0.2)] hover:text-[#ef4444] transition-all">
+                  <button className="px-4 py-1.5 border border-border bg-accent text-foreground text-[13px] font-medium rounded-md hover:border-[rgba(239,68,68,0.2)] hover:text-destructive transition-all">
                     Revoke
                   </button>
                 )}

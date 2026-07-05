@@ -141,7 +141,7 @@ export function AppDualSidebar() {
               >
                 {isActive && (
                   <div 
-                    className="absolute top-1/2 -translate-y-1/2 w-1 h-5 bg-[#10b981] rounded-r-sm shadow-[0_0_8px_rgba(16,185,129,0.5)]" 
+                    className="absolute top-1/2 -translate-y-1/2 w-1 h-5 bg-primary rounded-r-sm shadow-[0_0_8px_rgba(16,185,129,0.5)]" 
                     style={{ left: 'calc(-1 * (var(--rail-width) - 36px) / 2)' }}
                   />
                 )}

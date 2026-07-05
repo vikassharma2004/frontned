@@ -19,16 +19,16 @@ export default function BackupCodesPage() {
     <div className="w-full space-y-6">
       <div className="text-center space-y-4">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-[#e8e8e8]">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
             Use a backup code
           </h2>
-          <p className="text-sm text-[#999999] mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             Enter one of your 8-character emergency recovery codes.
           </p>
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#262626] bg-[#111111]/80 backdrop-blur-sm p-6 sm:p-8">
+      <div className="rounded-xl border border-border bg-card/80 backdrop-blur-sm p-6 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-1.5">
             <Input
@@ -39,12 +39,12 @@ export default function BackupCodesPage() {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCode(e.target.value.toUpperCase())}
               required
               maxLength={8}
-              className="h-12 font-mono text-center tracking-[0.3em] text-lg uppercase bg-[#161616] border-[#262626] text-[#e8e8e8] placeholder:text-[#555555] focus:border-[#34d399] focus:ring-1 focus:ring-[#34d399]/30 transition-colors"
+              className="h-12 font-mono text-center tracking-[0.3em] text-lg uppercase bg-secondary border-border text-foreground placeholder:text-[var(--text3)] focus:border-primary focus:ring-1 focus:ring-ring/30 transition-colors"
             />
           </div>
           <Button
             type="submit"
-            className="w-full h-10 bg-[#34d399] text-[#04140d] font-semibold hover:bg-[#10b981] transition-colors disabled:opacity-50"
+            className="w-full h-10 bg-primary text-primary-foreground font-semibold hover:bg-primary transition-colors disabled:opacity-50"
             disabled={isPending || code.length !== 8}
           >
             {isPending ? (
@@ -57,8 +57,8 @@ export default function BackupCodesPage() {
         </form>
       </div>
 
-      <div className="text-center text-sm text-[#555555]">
-        <Link to="/auth/login" className="hover:text-[#999999] transition-colors">
+      <div className="text-center text-sm text-[var(--text3)]">
+        <Link to="/auth/login" className="hover:text-muted-foreground transition-colors">
           Back to sign in
         </Link>
       </div>
