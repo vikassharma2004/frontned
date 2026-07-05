@@ -23,10 +23,10 @@ export default function VerifyEmailPage() {
     <div className="w-full space-y-6">
       <div className="text-center space-y-4">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-[#e8e8e8]">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
             {status === 'success' ? 'Email verified' : 'Verify your email'}
           </h2>
-          <p className="text-sm text-[#999999] mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             {status === 'success'
               ? 'Your email has been confirmed. You can now sign in.'
               : 'We sent a verification link to your email address.'}
@@ -34,22 +34,22 @@ export default function VerifyEmailPage() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#262626] bg-[#111111]/80 backdrop-blur-sm p-6 sm:p-8 space-y-4">
+      <div className="rounded-xl border border-border bg-card/80 backdrop-blur-sm p-6 sm:p-8 space-y-4">
         {status === 'success' ? (
           <div className="space-y-4">
-            <div className="flex items-center gap-3 p-3 rounded-lg bg-[#34d399]/5 border border-[#34d399]/10 text-sm text-[#34d399]">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10 text-sm text-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               Email successfully verified.
             </div>
             <Link to="/auth/login">
-              <Button className="w-full h-10 bg-[#34d399] text-[#04140d] font-semibold hover:bg-[#10b981] transition-colors">
+              <Button className="w-full h-10 bg-primary text-primary-foreground font-semibold hover:bg-primary transition-colors">
                 Sign in to your account
               </Button>
             </Link>
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="flex items-center gap-3 p-3 rounded-lg bg-[#6366f1]/5 border border-[#6366f1]/10 text-sm text-[#818cf8]">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-[var(--blue-bg)] border border-[var(--blue)]/10 text-sm text-[var(--get)]">
               {isVerifying ? (
                  <span className="flex items-center gap-2">
                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="31.4" strokeLinecap="round" /></svg>
@@ -64,7 +64,7 @@ export default function VerifyEmailPage() {
             </div>
             {!isVerifying && (
               <>
-                <p className="text-xs text-[#555555] text-center">
+                <p className="text-xs text-[var(--text3)] text-center">
                   Didn&apos;t receive the email? Check your spam folder or request a new link.
                 </p>
                 <Button 
@@ -75,7 +75,7 @@ export default function VerifyEmailPage() {
                     }
                   }}
                   disabled={isResending || !email}
-                  className="w-full h-10 border-[#262626] bg-transparent text-[#e8e8e8] hover:bg-[#262626]/50 transition-colors"
+                  className="w-full h-10 border-border bg-transparent text-foreground hover:bg-accent/50 transition-colors"
                 >
                   {isResending ? 'Sending...' : email ? 'Resend Email' : 'Resend Email (Email required)'}
                 </Button>
@@ -85,8 +85,8 @@ export default function VerifyEmailPage() {
         )}
       </div>
 
-      <div className="text-center text-sm text-[#555555]">
-        <Link to="/auth/login" className="hover:text-[#999999] transition-colors">
+      <div className="text-center text-sm text-[var(--text3)]">
+        <Link to="/auth/login" className="hover:text-muted-foreground transition-colors">
           Back to sign in
         </Link>
       </div>

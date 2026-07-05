@@ -19,11 +19,11 @@ export function ObservabilityShowcase() {
       </div>
 
       {/* Service status strip */}
-      <div className="rounded-lg border border-[#262626] bg-[#111111]/80 p-4 space-y-3">
+      <div className="rounded-lg border border-border bg-card/80 p-4 space-y-3">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#555555]">Service status</span>
-          <span className="flex items-center gap-1.5 text-xs text-[#34d399] font-medium">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#34d399] pulse-dot" />
+          <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--text3)]">Service status</span>
+          <span className="flex items-center gap-1.5 text-xs text-primary font-medium">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary pulse-dot" />
             All systems operational
           </span>
         </div>
@@ -36,8 +36,8 @@ export function ObservabilityShowcase() {
       </div>
 
       {/* Trace preview */}
-      <div className="rounded-lg border border-[#262626] bg-[#111111]/80 p-4 space-y-3">
-        <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#555555]">Trace preview</span>
+      <div className="rounded-lg border border-border bg-card/80 p-4 space-y-3">
+        <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--text3)]">Trace preview</span>
         <div className="space-y-1.5">
           <TraceSpan name="GET /api/orders" service="Gateway" duration="142ms" width="100%" color="#818cf8" depth={0} />
           <TraceSpan name="authenticate" service="Auth" duration="8ms" width="5.6%" color="#34d399" depth={1} />
@@ -55,12 +55,12 @@ export function ObservabilityShowcase() {
 function StatCard({ label, value, status }: { label: string; value: string; status: 'healthy' | 'warning' | 'error' }) {
   const dotColor = status === 'healthy' ? '#34d399' : status === 'warning' ? '#f59e0b' : '#ef4444';
   return (
-    <div className="rounded-lg border border-[#262626] bg-[#111111]/80 p-3.5 space-y-1.5">
+    <div className="rounded-lg border border-border bg-card/80 p-3.5 space-y-1.5">
       <div className="flex items-center gap-1.5">
         <span className="inline-block h-1.5 w-1.5 rounded-full pulse-dot" style={{ backgroundColor: dotColor }} />
-        <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[#555555]">{label}</span>
+        <span className="font-mono text-[10px] tracking-[0.1em] uppercase text-[var(--text3)]">{label}</span>
       </div>
-      <p className="font-mono text-xl font-medium text-[#e8e8e8] tracking-tight">{value}</p>
+      <p className="font-mono text-xl font-medium text-foreground tracking-tight">{value}</p>
     </div>
   );
 }
@@ -68,12 +68,12 @@ function StatCard({ label, value, status }: { label: string; value: string; stat
 function ServiceRow({ name, latency, status }: { name: string; latency: string; status: 'healthy' | 'warning' | 'error' }) {
   const dotColor = status === 'healthy' ? '#34d399' : status === 'warning' ? '#f59e0b' : '#ef4444';
   return (
-    <div className="flex items-center justify-between text-xs py-1 border-t border-[#262626]/50 first:border-0">
+    <div className="flex items-center justify-between text-xs py-1 border-t border-border/50 first:border-0">
       <div className="flex items-center gap-2">
         <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: dotColor }} />
-        <span className="text-[#e8e8e8]">{name}</span>
+        <span className="text-foreground">{name}</span>
       </div>
-      <span className="font-mono text-[#999999]">{latency}</span>
+      <span className="font-mono text-muted-foreground">{latency}</span>
     </div>
   );
 }
@@ -83,14 +83,14 @@ function TraceSpan({ name, service, duration, width, color, depth }: {
 }) {
   return (
     <div className="flex items-center gap-2 text-[11px]" style={{ paddingLeft: depth * 16 }} title={name}>
-      <span className="text-[#999999] min-w-[52px] font-mono text-[10px]">{service}</span>
-      <div className="flex-1 h-4 bg-[#1e1e1e] rounded overflow-hidden relative">
+      <span className="text-muted-foreground min-w-[52px] font-mono text-[10px]">{service}</span>
+      <div className="flex-1 h-4 bg-accent rounded overflow-hidden relative">
         <div
           className="h-full rounded"
           style={{ width, backgroundColor: color, opacity: 0.7 }}
         />
       </div>
-      <span className="font-mono text-[#999999] min-w-[40px] text-right">{duration}</span>
+      <span className="font-mono text-muted-foreground min-w-[40px] text-right">{duration}</span>
     </div>
   );
 }

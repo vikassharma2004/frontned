@@ -15,7 +15,7 @@ const PulseInput = React.forwardRef<HTMLInputElement, PulseInputProps>(
           className={cn(
             'bg-card border-border text-foreground transition-all duration-150',
             'focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary',
-            'hover:border-[#444444]',
+            'hover:border-input',
             error && 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive hover:border-destructive pr-10',
             className
           )}

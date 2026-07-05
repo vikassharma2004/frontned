@@ -21,7 +21,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-[13px] font-medium text-[#8A8F98]">Email</Label>
+        <Label htmlFor="email" className="text-[13px] font-medium text-muted-foreground">Email</Label>
         <Input
           id="email"
           type="email"
@@ -29,13 +29,13 @@ export function LoginForm() {
           autoComplete="email"
           {...register('email')}
           disabled={isPending}
-          className="h-[46px] bg-[#141414] border-[#1f1f1f] text-white placeholder:text-[#5C5F66] focus:border-[#10b981] focus:ring-1 focus:ring-[#10b981]/20 transition-all rounded-md px-4"
+          className="h-[46px] bg-card border-border text-foreground placeholder:text-[var(--text3)] focus:border-primary focus:ring-1 focus:ring-ring/20 transition-all rounded-md px-4"
         />
-        {errors.email && <p className="text-[#ef4444] text-xs">{errors.email.message}</p>}
+        {errors.email && <p className="text-destructive text-xs">{errors.email.message}</p>}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password" className="text-[13px] font-medium text-[#8A8F98]">Password</Label>
+        <Label htmlFor="password" className="text-[13px] font-medium text-muted-foreground">Password</Label>
         <div className="relative">
           <Input
             id="password"
@@ -44,13 +44,13 @@ export function LoginForm() {
             autoComplete="current-password"
             {...register('password')}
             disabled={isPending}
-            className="h-[46px] pr-12 bg-[#141414] border-[#1f1f1f] text-white placeholder:text-[#5C5F66] focus:border-[#10b981] focus:ring-1 focus:ring-[#10b981]/20 transition-all rounded-md px-4"
+            className="h-[46px] pr-12 bg-card border-border text-foreground placeholder:text-[var(--text3)] focus:border-primary focus:ring-1 focus:ring-ring/20 transition-all rounded-md px-4"
           />
           <button
             type="button"
             tabIndex={-1}
             onClick={() => setShowPassword((v) => !v)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#5C5F66] hover:text-[#8A8F98] transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text3)] hover:text-muted-foreground transition-colors"
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? (
@@ -62,11 +62,11 @@ export function LoginForm() {
         </div>
         <div className="flex justify-between items-center mt-2">
           {errors.password ? (
-            <p className="text-[#ef4444] text-xs">{errors.password.message}</p>
+            <p className="text-destructive text-xs">{errors.password.message}</p>
           ) : (
             <div />
           )}
-          <a href="/auth/forgot-password" className="text-[13px] text-[#8A8F98] hover:text-white transition-colors">
+          <a href="/auth/forgot-password" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors">
             Forgot password?
           </a>
         </div>
@@ -74,7 +74,7 @@ export function LoginForm() {
 
       <Button
         type="submit"
-        className="w-full h-[46px] mt-6 bg-[#10b981] text-black font-semibold hover:opacity-90 transition-opacity rounded-md disabled:opacity-50"
+        className="w-full h-[46px] mt-6 bg-primary text-background font-semibold hover:opacity-90 transition-opacity rounded-md disabled:opacity-50"
         disabled={isPending}
       >
         {isPending ? (

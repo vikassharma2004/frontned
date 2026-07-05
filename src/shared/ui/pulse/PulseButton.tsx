@@ -15,7 +15,7 @@ const PulseButton = React.forwardRef<HTMLButtonElement, PulseButtonProps>(
           'transition-all duration-150 ease-out active:scale-[0.98]',
           // The base button from shadcn already has nice defaults, we just add our enterprise specific tweaks here
           variant === 'default' &&
-            'bg-primary text-primary-foreground hover:bg-[#10b981] ring-1 ring-inset ring-white/10 shadow-sm',
+            'bg-primary text-primary-foreground hover:bg-primary ring-1 ring-inset ring-white/10 shadow-sm',
           variant === 'outline' &&
             'border-border bg-transparent hover:bg-accent hover:text-foreground',
           variant === 'ghost' &&
